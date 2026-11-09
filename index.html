@@ -3,105 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Sederhana Saya</title>
+    <title>Portofolio | Nama Anda</title>
     <style>
-        /* Pengaturan dasar */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* Variabel Warna agar mudah diganti */
+        :root {
+            --primary: #2563eb;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #f4f7f6;
-            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
             line-height: 1.6;
         }
 
-        /* Bagian Header / Navigasi */
-        header {
-            background-color: #2c3e50;
-            color: #ffffff;
-            padding: 20px 0;
-            text-align: center;
+        /* Navigasi */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        nav a {
-            color: #ffffff;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
             text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
         }
 
-        nav a:hover {
-            color: #1abc9c;
+        .nav-links a {
+            margin-left: 25px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
         }
 
-        /* Bagian Konten Utama */
-        .container {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        .nav-links a:hover {
+            color: var(--primary);
         }
 
-        /* Tombol Interaktif */
+        /* Hero Section (Perkenalan) */
+        .hero {
+            padding: 100px 10%;
+            text-align: center;
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        .hero span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
         .btn {
             display: inline-block;
-            background-color: #1abc9c;
-            color: #ffffff;
-            padding: 10px 20px;
+            background: var(--primary);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 6px;
             text-decoration: none;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.3s;
         }
 
         .btn:hover {
-            background-color: #16a085;
+            background: #1d4ed8;
         }
 
-        /* Bagian Footer */
+        /* Section Umum */
+        section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+        }
+
+        /* Keahlian (Skills) */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .skill-badge {
+            background: var(--card-bg);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Proyek (Grid Portofolio) */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background-color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-weight: bold;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Kontak & Footer */
+        .contact {
+            text-align: center;
+            background: var(--card-bg);
+        }
+
+        .contact p {
+            color: var(--gray);
+            margin-bottom: 25px;
+        }
+
         footer {
             text-align: center;
-            padding: 15px;
-            background-color: #2c3e50;
-            color: #ffffff;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 25px;
+            background: var(--dark);
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        /* Responsif untuk layar HP */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Selamat Datang di Website Saya</h1>
-        <nav>
-            <a href="#beranda">Beranda</a>
+    <!-- Navigasi -->
+    <nav>
+        <a href="#" class="logo">Portofolio.</a>
+        <div class="nav-links">
             <a href="#tentang">Tentang</a>
+            <a href="#keahlian">Keahlian</a>
+            <a href="#proyek">Proyek</a>
             <a href="#kontak">Kontak</a>
-        </nav>
+        </div>
+    </nav>
+
+    <!-- Bagian Utama / Hero -->
+    <header class="hero" id="tentang">
+        <h1>Halo, Saya <span>Nama Anda</span></h1>
+        <p>Web Developer & UI/UX Designer yang berfokus membangun pengalaman digital yang bersih, fungsional, dan responsif.</p>
+        <a href="#proyek" class="btn">Lihat Karya Saya</a>
     </header>
 
-    <div class="container">
-        <h2>Halo Dunia!</h2>
-        <p>Ini adalah halaman web sederhana yang dibuat menggunakan <strong>HTML</strong> untuk struktur dan <strong>CSS</strong> untuk tata letak serta desain.</p>
-        <p>Anda bisa mengubah teks, warna, maupun menambahkan gambar sesuai kebutuhan proyek Anda.</p>
-        
-        <button class="btn" onclick="sapaPengunjung()">Klik Saya</button>
-    </div>
+    <!-- Bagian Keahlian -->
+    <section id="keahlian">
+        <h2 class="section-title">Keahlian Utama</h2>
+        <div class="skills-container">
+            <span class="skill-badge">HTML5 & CSS3</span>
+            <span class="skill-badge">JavaScript</span>
+            <span class="skill-badge">UI/UX Design</span>
+            <span class="skill-badge">Figma</span>
+            <span class="skill-badge">Responsive Web</span>
+            <span class="skill-badge">Git & GitHub</span>
+        </div>
+    </section>
 
+    <!-- Bagian Proyek -->
+    <section id="proyek">
+        <h2 class="section-title">Proyek Pilihan</h2>
+        <div class="projects-grid">
+            
+            <!-- Kartu Proyek 1 -->
+            <div class="project-card">
+                <div class="project-img">Gambar Proyek 1</div>
+                <div class="project-info">
+                    <h3>Website Toko Online</h3>
+                    <p>Desain dan pengembangan halaman depan e-commerce modern dengan fitur keranjang belanja interaktif.</p>
+                    <a href="#" class="project-link">Lihat Detail &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Kartu Proyek 2 -->
+            <div class="project-card">
+                <div class="project-img">Gambar Proyek 2</div>
+                <div class="project-info">
+                    <h3>Aplikasi Manajemen Tugas</h3>
+                    <p>Aplikasi web sederhana untuk mencatat dan melacak produktivitas harian menggunakan penyimpanan lokal browser.</p>
+                    <a href="#" class="project-link">Lihat Detail &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Kartu Proyek 3 -->
+            <div class="project-card">
+                <div class="project-img">Gambar Proyek 3</div>
+                <div class="project-info">
+                    <h3>Landing Page Perusahaan</h3>
+                    <p>Halaman profil perusahaan yang dioptimalkan untuk kecepatan akses dan tampilan di perangkat mobile.</p>
+                    <a href="#" class="project-link">Lihat Detail &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Bagian Kontak -->
+    <section class="contact" id="kontak">
+        <h2 class="section-title">Mari Bekerja Sama</h2>
+        <p>Tertarik untuk berkolaborasi atau memiliki pertanyaan seputar proyek? Jangan ragu untuk menghubungi saya.</p>
+        <a href="mailto:emailanda@contoh.com" class="btn">Kirim Email</a>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Website Sederhana. Dibuat dengan penuh semangat.</p>
+        <p>&copy; 2026 Nama Anda. Hak Cipta Dilindungi.</p>
     </footer>
-
-    <!-- Sedikit JavaScript untuk interaktivitas -->
-    <script>
-        function sapaPengunjung() {
-            alert("Halo! Terima kasih telah mengunjungi website ini.");
-        }
-    </script>
 
 </body>
 </html>
